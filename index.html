@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<title>HotKeys</title>
+
+	<script src="jquery.min.js"></script>
+
+	<script src="calljs.js"></script>
+	<script src="jquery.hotkey.js"></script>
+		<style >*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+body {
+  background: url(https://f.cl.ly/items/2u1z0Y0I1U061j410F08/debut_light.png);
+}
+section {
+  max-width: 1000px;
+  margin: 2.6em auto;
+  padding: 0 4%;
+}
+h1 {
+  font: normal 1.8em/1.3 Capita, Georgia, serif;
+  margin: 0 0 1.2em;
+  color: #8ab300;
+}
+.photo-stack-grid {
+  list-style: none;
+  margin: 0 0 0 150px;
+  padding: 20px;
+  text-align: center;
+}
+.photo-stack-grid:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.photo-stack-grid li {
+  width: 46%;
+  float: left;
+  margin: 0 8% 2.8em 0;
+}
+.photo-stack-grid li:nth-child(2n) {
+  margin-right: 0;
+}
+
+/* remember to clear first item in each row */
+.photo-stack-grid li:nth-child(2n + 1) {
+  clear: left;
+}
+
+.photo-stack-grid a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font: 600 0.8em/1.3 "Open Sans", sans-serif;
+  
+}
+span {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+.photo-stack {
+	position: relative;
+	margin: 0 4% 2em;
+  display: block;
+}
+.photo-stack:before,
+.photo-stack:after,
+.photo-stack img {
+	display: block;
+	background: #ccc;
+	border: 5px solid #fff;
+  border-radius: 3px;
+	padding: 1px;
+	
+}
+.photo-stack:before,
+.photo-stack:after {
+  content: '';
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: #969289;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+  transform: rotate(6deg);
+}
+.photo-stack:after {
+	transform: rotate(10deg);
+  z-index: -1;
+}
+.photo-stack img {
+	transform: rotate(0deg);
+	width: 100%;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2),
+              0 14px 18px -12px rgba(0, 0, 0, 0.9);
+}
+.ie8 .photo-stack:before,
+.ie8 .photo-stack:after {
+	display: none;
+}
+
+@media (min-width: 620px) {
+    body {
+      font-size: 120%;
+    }
+    .photo-stack-grid li {
+      width: 19%;
+    }
+    .photo-stack-grid li:nth-child(2n) {
+      margin-right: 12%;
+    }
+    .photo-stack-grid li:nth-child(2n + 1) {
+      clear: none;
+    }
+    .photo-stack-grid li:nth-child(4n) {
+      margin-right: 0;
+    }
+    .photo-stack-grid li:nth-child(4n + 1) {
+      clear: left;
+    }
+}
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: -10px 0px 20px 350px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+.zoom {
+			/* padding: 50px; */
+			/* background-color: green; */
+			transition: transform .2s;
+			/* Animation */
+			/* width: 200px;
+			height: 200px; */
+			margin: 0 auto;
+		}
+
+		.zoom:hover {
+			transform: scale(1.5);
+			/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+		}</style>
+
+</head>
+
+<body style="background-color:#f1f1f1;">
+	<section>
+  <h1>Check Out Views</h1>
+ 
+<button class="button button1" onclick="enable_view()">Activate hotkey</button>
+<ul class="photo-stack-grid">
+  <li class="zoom" data-value="ctrl + up" onMouseOut="zoomHoverOutClick();"
+	onmouseover="zoomHoverClick(this);">
+    <a href="#d">
+      <figure class="photo-stack">
+        <img src="C:\Users\KESHAV\Desktop\PG Course\GitHub\hotkeys\img\Top.JPG" alt="picture" height="130"/>
+      
+	  </figure>
+      <span>Top View</span>
+    </a>
+  </li>
+  <li class="zoom" data-value="ctrl + down" onMouseOut="zoomHoverOutClick();"
+	onmouseover="zoomHoverClick(this);">
+    <a href="#d">
+      <figure class="photo-stack">
+        <img src="C:\Users\KESHAV\Desktop\PG Course\GitHub\hotkeys\img\front.JPG" alt="picture" height="130"/>
+      </figure>
+      <span>Front View</span>
+    </a>
+  </li>
+  <li class="zoom" data-value="ctrl + left" onMouseOut="zoomHoverOutClick();"
+			onmouseover="zoomHoverClick(this);">
+
+    <a href="#d">
+      <figure class="photo-stack">
+        <img src="C:\Users\KESHAV\Desktop\PG Course\GitHub\hotkeys\img\sideview.JPG" alt="picture" height="130" />
+      </figure>
+      <span>Side View</span>
+    </a>
+  </li>
+  </ul>
+  <div style="border: 1px solid gray;margin: 10px;">
+			<center>
+			<h1 style="color:black"> Set View Shortcut Mode</h1>
+				<p id="demo"></p>
+				<div id="shortcut_key" style="display:none;color:red;"><h3>View Shortcut Mode</h3></div>
+			</center>
+		</div>
+	
+	<div id="standard_view_div">
+		<div class='container'></div>
+
+</section>
+
+	
+		
+	<!---------------------------------------------------------------------------------------------------------------------------------------------->
+
+</body>
+
+</html>
